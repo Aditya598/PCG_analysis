@@ -1,9 +1,12 @@
+# this section extracts input parameters, subdivides the phase signal into segments and classifies those segments as per the algorithm 
+# detailed in chapter 5 of the thesis.
+
+
 import matplotlib.pyplot as plt
 import numpy as np
 
 
-# segment_vector = []
-
+# divide the phase wave into segments of ranges from lowest to highest value, spread across the entire signal
 def segment(phase_wave):
     segment_vector = []
     a = []
@@ -35,6 +38,7 @@ def segment(phase_wave):
     return segment_vector
 
 
+# initialize values of parameters: segment interval, segment duration, segment area of the envelope 
 def initialize_parameters(segments, signal):
     interval = []
     dur = []
@@ -55,7 +59,7 @@ def initialize_parameters(segments, signal):
     return interval, dur, area_env
                 
 
-
+# classify according to the detailed algorithm
 def recog(n_i, seg_dur, area_env, intervals):
     hs_vector = [0] * n_i
     s1_flag = False
@@ -64,9 +68,9 @@ def recog(n_i, seg_dur, area_env, intervals):
         try:
             if intervals[i] < intervals[i + 1]:
                 s1_flag = True
-                if (intervals[i + 1] - intervals[i] > 2205):
+                if (intervals[i + 1] - intervals[i] > 2205):    # 50ms = 2205 samples
                     hs_vector[i] = 1
-                elif (seg_dur[i] > seg_dur[i + 1]) and (seg_dur[i] - seg_dur[i + 1]) > 220.5:
+                elif (seg_dur[i] > seg_dur[i + 1]) and (seg_dur[i] - seg_dur[i + 1]) > 220:   # 5ms = 220 samples
                     hs_vector[i] = 1
                 elif area_env[i] > 1.5 * area_env[i + 1]:
                     hs_vector[i] = 1
@@ -90,52 +94,5 @@ def recog(n_i, seg_dur, area_env, intervals):
             continue
     return hs_vector
 
-
-def recog_2(segments, seg_dur, area_env, intervals, signal):
-    hs_vector = []
-    _iter = 0
-    for i in range(len(signal)):
-        s1_flag = False
-        s2_flag = False
-        try:
-            if len(segments[_iter]) < 2:
-                _iter += 1
-                hs_vector.append(0)
-                continue
-            elif segments[_iter][0] <= i <= segments[_iter][1]:
-                if i == (segments[_iter][1]):
-                    _iter += 1
-                try:
-                    if intervals[i] < intervals[i + 1]:
-                        s1_flag = True
-                        if (intervals[i + 1] - intervals[i] > 2205):
-                            hs_vector.append(1)
-                        elif (seg_dur[i] > seg_dur[i + 1]) and (seg_dur[i] - seg_dur[i + 1]) > 220.5:
-                            hs_vector.append(1)
-                        elif area_env[i] > 1.5 * area_env[i + 1]:
-                            hs_vector.append(1)
-                    else:
-                        s2_flag = True
-                        hs_vector.append(-1)
-                    if intervals[i] > intervals[i + 1]:
-                        s2_flag = True
-                        if intervals[i] - intervals[i + 1] > 2205:
-                            hs_vector.append(-1)
-                        elif seg_dur[i] < seg_dur[i + 1] and seg_dur[i + 1] - seg_dur[i] > 220.5:
-                            hs_vector.append(-1)
-                        elif area_env[i] < 1.5 * area_env[i + 1]:
-                            hs_vector.append(-1)
-                    else:
-                        s1_flag = True
-                        hs_vector.append(1)
-                    if not s1_flag and not s2_flag:
-                        hs_vector.append(0)
-                except IndexError:
-                    continue
-            else:
-                hs_vector.append(0)
-        except IndexError:
-            continue
-    return hs_vector
                     
     
