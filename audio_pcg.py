@@ -1,3 +1,11 @@
+# this is a code for converting pcg wav files into text csv files for analysis
+# source for the downloaded pcg signals:
+# @misc{pascal-chsc-2011,
+# author = "Bentley, P. and Nordehn, G. and Coimbra, M. and Mannor, S.",
+# title = "The {PASCAL} {C}lassifying {H}eart {S}ounds {C}hallenge 2011 {(CHSC2011)} {R}esults",
+# howpublished = "http://www.peterjbentley.com/heartchallenge/index.html"} 
+
+
 import os
 import wave
 import tkinter as tk
