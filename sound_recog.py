@@ -1,7 +1,6 @@
 # this section extracts input parameters, subdivides the phase signal into segments and classifies those segments as per the algorithm 
 # detailed in chapter 5 of the thesis.
 
-
 import matplotlib.pyplot as plt
 import numpy as np
 
