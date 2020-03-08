@@ -5,7 +5,6 @@
 #  exactly by the methods outlined in it. The acquired signal, hence, is noisier and less accurate
 
 
-
 import numpy as np
 import matplotlib.pyplot as plt
 import math
