@@ -17,13 +17,14 @@ folder_path = r'C:\Users\Aditya\EOG Project\Read papers\Atraining_normal'
 folder_files = glob.glob(folder_path + '/*.wav')
 frame_rate = []
 
+# get frame rate of pcg signal in Hz
 def frame_rate():
     global frame_rate, folder_path
     for file_name in os.listdir(folder_path):
         with wave.open(file_name, 'rb') as wave_file:
             frame_rate.append(wave_file.getframerate())
 
-
+# write pcg signal to csv spreadsheet
 def write_to_sheet():
     global folder_path, folder_files
     _iter = 0
