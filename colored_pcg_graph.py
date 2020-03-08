@@ -4,6 +4,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
+# get color vector with specific ranges  having specific colors
 def get_colors(segments, signal, sol_vec):
     colors = ['black'] * len(signal)
     for i in range(len(segments)):
