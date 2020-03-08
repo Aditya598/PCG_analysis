@@ -3,6 +3,8 @@ This repository is for collection and analysis of Phonocardiogram signals as out
 "PHONOCARDIOGRAM SIGNAL DELINEATION METHODS FOR AUTOMATED ANALYSIS OF HEART SOUNDS AND MURMURS" for AMRITA SCHOOL OF ENGINEERING in 
 July 2017. Specifically, this repo tries to implement some of the methods detailed in the thesis' 5th chapter. 
 
+The PCG signals used in this analysis can be found [here](http://www.peterjbentley.com/heartchallenge/)
+
 <p align="center"><img src="tmp_images_pcg/filtered_pcg.png" width="480"></p>
 
 Above is the image of a PCG signal exhibiting, in order of time: first an s4 signal followed quickly by s1, a small interference and then s2. 
