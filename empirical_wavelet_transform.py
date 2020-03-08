@@ -14,6 +14,7 @@ from scipy.signal import savgol_filter
 from scipy.signal import hilbert
 
 
+# accept arbitrarily long pcg wave
 def wave_input():
     wave = []
     print('enter wave')
@@ -26,11 +27,13 @@ def wave_input():
     return wave
 
 
+# returns the shannon entropy envelope of the absolute pcg signal
 def shannon_entropy_envelope(abs_signal):
     shannon_entropy = [-i * math.log(i) for i in abs_signal]
     return savgol_filter(shannon_entropy, 299, 4)
 
 
+# accepts signal input and transforms obtained signal to the phase domain 
 def transform():
     inp = np.array(wave_input(), dtype=float)
     t_gol = savgol_filter(inp, 299, 6)
