@@ -1,7 +1,6 @@
 # this code outputs a tri-colored graph of the input pcg signal, color-segmented as red for s1 sounds, blue for s2 sounds, and black for 
 # other sounds. Outside code has been utilized for segmentation and graphing according to the color scheme
 
-
 import matplotlib.pyplot as plt
 import numpy as np
 
