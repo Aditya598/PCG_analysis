@@ -1,3 +1,10 @@
+# this code is used to convert the raw pcg data into instantaneous phase of its enveloped hilbert transform as specified in the
+# 5th chapter of the thesis by V. NIVITHA VARGHEES titled "PHONOCARDIOGRAM SIGNAL DELINEATION METHODS FOR AUTOMATED ANALYSIS OF
+# HEART SOUNDS AND MURMURS" for AMRITA SCHOOL OF ENGINEERING (July 2017)
+# *Note: the wave transform according to the Empirical Wavelet Transform mentioned in the thesis hasn't been replicated completely or
+#  exactly by the methods outlined in it. The acquired signal, hence, is noisier and less accurate
+
+
 import cleanup
 import numpy as np
 import matplotlib.pyplot as plt
@@ -27,20 +34,11 @@ def shannon_entropy_envelope(abs_signal):
 def transform():
     inp = np.array(wave_input(), dtype=float)
     t_gol = savgol_filter(inp, 299, 6)
-    plt.plot(t_gol)
-    plt.show()
     abs_t = [abs(i) for i in t_gol]
     se_t = abs(shannon_entropy_envelope(abs_t))
-    plt.plot(abs_t)
-    plt.show()
     analytic_wave = hilbert(se_t)
     amplitude_envelope = np.abs(analytic_wave)
-    plt.plot(se_t)
-    plt.plot(amplitude_envelope)
-    plt.show()
     instantaneous_phase = np.unwrap(np.angle(analytic_wave))
-    plt.plot(instantaneous_phase)
-    plt.show()
     return amplitude_envelope, instantaneous_phase, t_gol
 
 
