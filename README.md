@@ -26,4 +26,6 @@ Above is the image of the instantaneous phase of the hilbert transform over time
 Above we can see the color mapped PCG signal with red regions denoting s1, blue regions denoting s2, and black regions denoting all other 
 ranges. As is evident, the classification isn't nearly as good as it could have been. This is due to the fact that the phase waveform is distorted. 
 
-A smoother, more defined phase signal would have lead to the correct classification, as per the method outlined in the thesis. A few reasons this doesn't happen is due to the differences in filtering methods used, and the non-inclusion of the adaptive noise level threshold in the classification code implemented here. 
+A smoother, more defined phase signal would have lead to the correct classification, as per the method outlined in the thesis. A few reasons this doesn't happen is due to the differences in filtering methods used, and the non-inclusion of the adaptive noise level threshold in the classification code implemented here. Further accurate implementation will require, on my part, a bit more study of all the concepts involved. 
+
+This is, of course, a work in progress and I will continue to update it as I get better and more efficiently and elegantly employ all the techniques. 
