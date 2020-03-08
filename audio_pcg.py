@@ -5,7 +5,6 @@
 # title = "The {PASCAL} {C}lassifying {H}eart {S}ounds {C}hallenge 2011 {(CHSC2011)} {R}esults",
 # howpublished = "http://www.peterjbentley.com/heartchallenge/index.html"} 
 
-
 import os
 import wave
 import tkinter as tk
