@@ -1,3 +1,8 @@
+# this section of the code does not process or analyze anything. This simply exists to call on other modules to collect, store and use
+# their outputs. This file requires all the imports just as all the imports mentioned here cannot run without this file. This code exists
+# purely for organizational purposes and should not be taken as anything else.
+
+
 import audio_pcg
 import ewt
 import sound_recog
@@ -5,7 +10,7 @@ import grapher
 import numpy as np
 import matplotlib.pyplot as plt
 
-# audio_pcg.write_to_sheet()
+audio_pcg.write_to_sheet()
 env, phase, signal = ewt.transform()
 phase_list = phase.tolist()
 segmented_vector = sound_recog.segment(phase_list)
